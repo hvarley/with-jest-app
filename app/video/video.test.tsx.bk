@@ -1,0 +1,29 @@
+import { render, screen } from "@testing-library/react";
+import Video from "./video";
+
+const customerRentals = [
+    {
+        id: 1,
+        days: 1,
+    },
+    {
+        id: 2,
+        days: 2,
+    },
+    {
+        id: 3,
+        days: 3,
+    },
+]
+
+
+it("Heading is present", () => {
+  render(<Video customer="Joe Bloggs" customerRentals={customerRentals} />);
+  expect(screen.getByTestId("test-h2")).toHaveTextContent("Rental Record for Joe Bloggs");
+});
+
+it("Is statement correct", () => {
+  render(<Video customer="Joe Bloggs" customerRentals={customerRentals} />);
+  expect(screen.getByTestId("test-points")).toHaveTextContent("Points: 3");
+});
+

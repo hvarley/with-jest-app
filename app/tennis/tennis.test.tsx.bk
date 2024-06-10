@@ -1,0 +1,26 @@
+import { fireEvent, render, screen } from "@testing-library/react";
+import Tennis from "./tennis";
+
+
+it("Heading is present", () => {
+  render(<Tennis />);
+  expect(screen.getByTestId("test-h1")).toHaveTextContent("TENNIS KATA");
+});
+
+it("Scoring is correct", () => {
+  render(<Tennis />);
+  expect(screen.getByTestId("test-score")).toHaveTextContent("0 - 0");
+  fireEvent.click(screen.getByTestId("test-button1"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("15 - 0");
+  fireEvent.click(screen.getByTestId("test-button2"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("15 - 15");
+  fireEvent.click(screen.getByTestId("test-button2"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("15 - 30");
+  fireEvent.click(screen.getByTestId("test-button2"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("15 - 40");
+  fireEvent.click(screen.getByTestId("test-button2"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("Player 2 Win");
+  fireEvent.click(screen.getByTestId("test-buttonReset"));
+  expect(screen.getByTestId("test-score")).toHaveTextContent("0 - 0");
+});
+
