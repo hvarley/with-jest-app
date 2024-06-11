@@ -7,9 +7,10 @@ it("Heading is present", () => {
   expect(screen.getByTestId("test-h1")).toHaveTextContent("INTERVIEW KATA");
 });
 
-// it("Scoring is correct", () => {
-//   render(<Madetech />);
-//   expect(screen.getByTestId("test-score")).toHaveTextContent("0 - 0");
-//   fireEvent.click(screen.getByTestId("test-button1"));
-// });
+it("User rents a scooter is correct", () => {
+  render(<Madetech />);
+  expect(screen.getByTestId("scooters-hired")).toHaveTextContent("Scooter hired: false");
+  fireEvent.click(screen.getByTestId("test-button1"));
+  expect(screen.getByTestId("scooters-hired")).toHaveTextContent("Scooter hired: true");
+});
 
